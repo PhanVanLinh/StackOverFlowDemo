@@ -11,16 +11,18 @@ public class Masjed {
     private String name;
     private String address;
     private String phone;
+    private long mark;
     private boolean matloopEmam;
 
     public Masjed(String userID, String id, String name, String address, String phone,
-            boolean matloopEmam) {
+            boolean matloopEmam, long mark) {
         this.userID = userID;
         this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.matloopEmam = matloopEmam;
+        this.mark = mark;
     }
 
     public String getId() {
@@ -81,6 +83,14 @@ public class Masjed {
         this.phone = phone;
     }
 
+    public long getMark() {
+        return mark;
+    }
+
+    public void setMark(long mark) {
+        this.mark = mark;
+    }
+
     public Map<String, Object> toMap() {
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
@@ -88,6 +98,7 @@ public class Masjed {
         map.put("phone", phone);
         map.put("id", id);
         map.put("userID", userID);
+        map.put("mark", mark);
         return map;
     }
 
@@ -98,6 +109,7 @@ public class Masjed {
             stringBuilder.append("\nId: "+masjed.getId());
             stringBuilder.append("\nAddress: "+masjed.getAddress());
             stringBuilder.append("\nPhone: "+masjed.getPhone());
+            stringBuilder.append("\nMark: "+masjed.getMark());
             stringBuilder.append("\n----------------\n");
         }
         return stringBuilder.toString();

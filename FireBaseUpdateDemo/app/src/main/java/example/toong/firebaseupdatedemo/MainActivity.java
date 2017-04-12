@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                masjed = new Masjed("userId", "", "name", "address", "phone", true);
+                masjed = new Masjed("userId", "", "name", "address", "phone", true, 10);
                 mDatabase.child("masjed")
                         .push()
                         .setValue(masjed, new DatabaseReference.CompletionListener() {
