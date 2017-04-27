@@ -105,13 +105,14 @@ public class Masjed {
     public static String listToString(List<Masjed> masjedArrayList) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Masjed masjed : masjedArrayList) {
-            stringBuilder.append("Name: "+masjed.getName());
-            stringBuilder.append("\nId: "+masjed.getId());
-            stringBuilder.append("\nAddress: "+masjed.getAddress());
-            stringBuilder.append("\nPhone: "+masjed.getPhone());
-            stringBuilder.append("\nMark: "+masjed.getMark());
+            stringBuilder.append("Name: " + masjed.getName());
+            stringBuilder.append("\nId: " + masjed.getId());
+            stringBuilder.append("\nAddress: " + masjed.getAddress());
+            stringBuilder.append("\nPhone: " + masjed.getPhone());
+            stringBuilder.append("\nMark: " + masjed.getMark());
             stringBuilder.append("\n----------------\n");
         }
         return stringBuilder.toString();
     }
+
 }

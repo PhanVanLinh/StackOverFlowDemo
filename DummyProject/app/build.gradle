@@ -26,5 +26,13 @@ dependencies {
   })
   compile 'com.android.support:appcompat-v7:25.3.1'
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
+  compile 'com.squareup.okhttp3:okhttp:3.4.1'
+  compile 'com.mapzen.android:lost:1.1.1'
+//  compile(name: 'MapboxGLAndroidSDK-release', ext: 'aar')
+
+  compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar'){
+    transitive=true
+  }
+
   testCompile 'junit:junit:4.12'
 }
