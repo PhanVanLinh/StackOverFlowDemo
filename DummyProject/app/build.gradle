@@ -25,10 +25,12 @@ dependencies {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
   compile 'com.android.support:appcompat-v7:25.3.1'
-  compile 'com.android.support.constraint:constraint-layout:1.0.2'
-  compile 'com.squareup.okhttp3:okhttp:3.4.1'
-  compile 'com.mapzen.android:lost:1.1.1'
-//  compile(name: 'MapboxGLAndroidSDK-release', ext: 'aar')
+  compile 'com.jakewharton.timber:timber:4.5.1'
+  compile 'com.squareup.okhttp3:okhttp:3.6.0'
+  compile 'com.mapzen.android:lost:2.1.2'
+  compile 'com.mapbox.mapboxsdk:mapbox-java-services:2.0.0'
+  compile 'com.mapbox.mapboxsdk:mapbox-android-telemetry:2.0.0'
+//  compile(name:'MapboxGLAndroidSDK-release', ext:'aar')
 
   compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar'){
     transitive=true

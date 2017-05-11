@@ -1,12 +1,14 @@
-package example.toong.dummyproject;
+package com.example.framgia.myapplication;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.mapbox.mapboxsdk.Mapbox;
-import com.mapbox.mapboxsdk.annotations.PolylineOptions;
+import com.mapbox.mapboxsdk.annotations.Marker;
+import com.mapbox.mapboxsdk.annotations.MarkerView;
+import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -14,47 +16,51 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class MainActivity extends AppCompatActivity {
     private MapView mapView;
-    private static final String TAG = "ss";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Mapbox.getInstance(getApplicationContext(), "pk.eyJ1IjoicGhhbnZhbmxpbmg5NHZuIiwiYSI6ImNqMW44ZmtlbDAwcjYyd28yaDQzbzJwejAifQ.v9ID5IxcItXpaw72ZVN4dA");
-//        Mapbox.getInstance(getApplicationContext(), "mt-pk.eyJ1IjoibWFwaW9uIiwiYSI6InJ5ZXFiOWJyZ3J2MjV3ZDcyNXY3Z3dmYzYifQ.XoOA7fe-5nUi8ALSyCl277");
         setContentView(R.layout.activity_main);
 
         mapView = (MapView) findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
-//        mapView.setStyleUrl("https://www.mapion.co.jp/d/smp-apps/common/mapion-gl-stylels/style-raster-mapion-ssl.json");
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
-                // customize map with markers, polylines, etc
-
                 Toast.makeText(MainActivity.this, "ready", Toast.LENGTH_SHORT).show();
-
                 CameraPosition currentCameraPosition = mapboxMap.getCameraPosition();
-                CameraPosition position = new CameraPosition.Builder(currentCameraPosition).target(new LatLng(35,106)).zoom(1).build();
+                CameraPosition position = new CameraPosition.Builder(currentCameraPosition).target(new LatLng(35, 106)).zoom(8).build();
                 mapboxMap.animateCamera(CameraUpdateFactory
                         .newCameraPosition(position));
 
-                LatLng[] pointsArray = new LatLng[2];
-                for (int i = 0; i < 2; i++) {
-                    pointsArray[i] = new LatLng(35 * (i+1), 106);
-                }
+                MarkerViewOptions markerViewOptions = new MarkerViewOptions()
+                        .position(new LatLng(35, 106));
 
-                mapboxMap.addPolyline(new PolylineOptions()
-                        .add(pointsArray)
-                        .color(Color.parseColor("#8a8acb"))
-                        .width(10));
+                MarkerView markerView = mapboxMap.addMarker(markerViewOptions);
+                //mapboxMap.selectMarker(markerView); // the trick to make marker view return click at first time
+
+                mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(@NonNull Marker marker) {
+
+                        return true;
+                    }
+                });
+
+//                mapboxMap.getMarkerViewManager().setOnMarkerViewClickListener(new MapboxMap.OnMarkerViewClickListener() {
+//                    @Override
+//                    public boolean onMarkerClick(@NonNull Marker marker, @NonNull View view, @NonNull MapboxMap.MarkerViewAdapter adapter) {
+//                        Log.i("TAG", "MARKER clicked");
+//                        return true;
+//                    }
+//                });
             }
         });
     }
+
     @Override
     protected void onStart() {
         super.onStart();
