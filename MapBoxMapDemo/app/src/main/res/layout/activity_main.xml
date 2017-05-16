@@ -8,8 +8,20 @@
 
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp"
+        >
     </com.mapbox.mapboxsdk.maps.MapView>
+
+    <Button
+        android:id="@+id/btn_update_marker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Marker"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        />
 
 </android.support.constraint.ConstraintLayout>

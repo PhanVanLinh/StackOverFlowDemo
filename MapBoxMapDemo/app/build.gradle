@@ -1,43 +1,43 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
-    defaultConfig {
-        applicationId "com.example.framgia.myapplication"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  compileSdkVersion 25
+  buildToolsVersion "25.0.2"
+  defaultConfig {
+    applicationId "com.example.framgia.myapplication"
+    minSdkVersion 15
+    targetSdkVersion 25
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+  }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
 
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.jakewharton.timber:timber:4.5.1'
-    compile 'com.squareup.okhttp3:okhttp:3.6.0'
-    compile 'com.mapzen.android:lost:2.1.2'
-    compile 'com.mapbox.mapboxsdk:mapbox-java-services:2.0.0'
-    compile 'com.mapbox.mapboxsdk:mapbox-android-telemetry:2.0.0'
-//  compile(name:'MapboxGLAndroidSDK-release', ext:'aar')
+  compile 'com.android.support:appcompat-v7:25.3.1'
+//    compile(name:'MapboxGLAndroidSDK-release', ext:'aar')
 
-    compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar'){
-        transitive=true
-    }
+  compile('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar') {
+    transitive = true
+  }
 
-    testCompile 'junit:junit:4.12'
+  compile 'com.android.support:appcompat-v7:25.3.1'
+  compile 'com.android.support.constraint:constraint-layout:1.0.2'
+  compile 'com.jakewharton.timber:timber:4.5.1'
+  compile 'com.squareup.okhttp3:okhttp:3.6.0'
+  compile 'com.mapzen.android:lost:2.1.2'
+  compile 'com.mapbox.mapboxsdk:mapbox-java-services:2.0.0'
+  compile 'com.mapbox.mapboxsdk:mapbox-android-telemetry:2.0.0'
+  testCompile 'junit:junit:4.12'
 }

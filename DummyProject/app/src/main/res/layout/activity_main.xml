@@ -5,17 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <example.toong.dummyproject.MopView
-        android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="65dp"
+        android:layout_height="25dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_ss"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="notify"
+        android:textColor="#fff"
+        android:textSize="11sp" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_launcher" />
-
-    </example.toong.dummyproject.MopView>
 
 </RelativeLayout>

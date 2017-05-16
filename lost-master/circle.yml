@@ -1,0 +1,30 @@
+machine:
+  java:
+    version: oraclejdk8
+
+dependencies:
+  pre:
+    - if [ ! -e /usr/local/android-sdk-linux/build-tools/25.0.3 ]; then echo y | android update sdk --all --no-ui --filter "build-tools-25.0.3"; fi;
+    - if [ ! -e /usr/local/android-sdk-linux/platforms/android-25 ]; then echo y | android update sdk --all --no-ui --filter "android-25"; fi;
+    - if ! $(grep -q "Revision=47.0.0" /usr/local/android-sdk-linux/extras/android/m2repository/source.properties); then echo y | android update sdk --all --no-ui --filter "extra-android-m2repository"; fi;
+  cache_directories:
+    - /usr/local/android-sdk-linux/build-tools/25.0.3
+    - /usr/local/android-sdk-linux/platforms/android-25
+    - /usr/local/android-sdk-linux/extras/android/m2repository
+
+test:
+  override:
+    - ./gradlew -PdisablePreDex
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - scripts/deploy-snapshot.sh
+      - scripts/release.sh
+      - scripts/deploy-javadocs.sh
+  release:
+    tag: /lost-[0-9]+(\.[0-9]+)*(-rc[0-9])?/
+    owner: mapzen
+    commands:
+      - scripts/deploy-staging.sh
